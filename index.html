@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TP-Final Simulación</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+</head>
+<body>
+
+    <form>
+        <div class="row">
+         <div class="col    -md-4 order-md-4 ">  
+            <div class="col">
+                <input type="text" id="weekAgents" class="form-control" placeholder="Agentes L-V">
+            </div>
+            <div class="col">
+                <input type="text" id="weekendAgents" class="form-control" placeholder="Agentes fines de semana">
+            </div>
+        </div>
+        </div>
+      </form>
+
+
+    
+    <button type="button" class="btn btn-primary" id="simulate-btn">Simulate</button>
+    <div id="graph1"></div>  
+    <div id="graph2"></div>  
+    
+    <script src="js/ticket-simulation.js"></script>
+    <script src="js/graph.js"></script>
+    <script src="index.js"></script>
+</body>
+
