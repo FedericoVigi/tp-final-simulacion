@@ -10,25 +10,74 @@
 </head>
 <body>
 
-    <form>
-        <div class="row">
-         <div class="col    -md-4 order-md-4 ">  
-            <div class="col">
-                <input type="text" id="weekAgents" class="form-control" placeholder="Agentes L-V">
+    <form class="row g-3" style="margin:10px">
+
+        <div class="col-md-4">
+            <h5>Escenario 1</h5>       
+            <div class="form-group row">
+              <div class="col-md-4">
+                  <label style="margin:5px" class="form-label">Agentes L-V:</label>
+              </div>
+              <div class="col-md-8">
+                  <input type="text" class="form-control" id="weekAgents1"  value="165">
+              </div>
             </div>
-            <div class="col">
-                <input type="text" id="weekendAgents" class="form-control" placeholder="Agentes fines de semana">
+  
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label style="margin:5px" class="form-label">Agentes FD:</label>
+              </div>
+              <div class="col-md-8">
+                  <input type="text" class="form-control" id="weekendAgents1"  value="145">
+              </div>
             </div>
-        </div>
-        </div>
+          </div>
+          
+          <div class="col-md-4">
+            <h5>Escenario 2</h5>       
+            <div class="form-group row">
+              <div class="col-md-4">
+                  <label style="margin:5px" class="form-label">Agentes L-V:</label>
+              </div>
+              <div class="col-md-8">
+                  <input type="text" class="form-control" id="weekAgents2" value="170">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label style="margin:5px" class="form-label">Agentes FD:</label>
+              </div>
+              <div class="col-md-8">
+                  <input type="text" class="form-control" id="weekendAgents2"  value="150">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <h5>Escenario 3</h5>       
+            <div class="form-group row">
+              <div class="col-md-4">
+                  <label style="margin:5px" class="form-label">Agentes L-V:</label>
+              </div>
+              <div class="col-md-8">
+                  <input type="text" class="form-control" id="weekAgents3"  value="180">
+              </div>
+            </div>
+  
+            <div class="form-group row">
+              <div class="col-md-4">
+                <label style="margin:5px" class="form-label">Agentes FD:</label>
+              </div>
+              <div class="col-md-8">
+                  <input type="text" class="form-control" id="weekendAgents3"  value="155">
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" id="simulate-btn">Simular</button>
       </form>
-
-
-    
-    <button type="button" class="btn btn-primary" id="simulate-btn">Simulate</button>
-    <div id="graph1"></div>  
-    <div id="graph2"></div>  
-    
+      
+    <div id="graphs"></div>
     <script src="js/ticket-simulation.js"></script>
     <script src="js/graph.js"></script>
     <script src="index.js"></script>
