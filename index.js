@@ -1,23 +1,22 @@
 (function () {
 
     let simulateBtn = document.getElementById("simulate-btn");
-    let weekAgentsInput = document.getElementById('weekAgents')
-    let weekendAgentsInput = document.getElementById('weekendAgents')
 
     simulateBtn.onclick = function () {
         
-        let weekAgents = parseInt(weekAgentsInput.value)
-        let weekendAgents = parseInt(weekendAgentsInput.value)
-
-        if(isNaN(weekAgents) || isNaN(weekendAgents)){
-            alert("Entrada Invalida")
+        let scenarios = []
+        for (let i = 1; i <=3; i++) {
+            let weekAgents = parseInt(document.getElementById(`weekAgents${i}`).value)
+            let weekendAgents = parseInt(document.getElementById(`weekendAgents${i}`).value)
+            if(!isNaN(weekAgents) && !isNaN(weekendAgents)){
+                scenarios.push({
+                    weekAgents: weekAgents,
+                    weekendAgents: weekendAgents
+                })
+            }            
         }
-        console.log(weekAgents)
-        console.log(weekendAgents)
-        //results = simulate(165,145)// pesimista
-        //results = simulate(100,80)// real
-        //results = simulate(190,160) //  optimo
-        results = simulate(weekAgents,weekendAgents)
+        console.log(scenarios)
+        results = simulateScenarios(scenarios)
         generateGraph(results)
     };
 

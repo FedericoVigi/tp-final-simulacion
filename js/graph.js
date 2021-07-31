@@ -1,20 +1,42 @@
 function generateGraph(results){
 
     console.log(results)
-    var data = {
-        x: results.queues.map(q => q.name),
-        y: results.queues.map(q => q.value),
+    config = { responsive: true, displayModeBar: false };
+    graphs = document.getElementById('graphs');
+
+    // remove old graphs
+    while (graphs.firstChild) {
+        graphs.removeChild(graphs.lastChild);
+    }
+
+
+    results.forEach(result => {
+        data = getGraphData(result)
+        layout = getLayout(result.weekAgents, result.weekendAgents)
+        graphDiv = document.createElement("div")
+        graphs.appendChild(graphDiv)
+        Plotly.newPlot(graphDiv, [data], layout, config);
+    });
+}
+
+function getGraphData(result){
+    return  {
+        x: result.queues.map(q => q.name),
+        y: result.queues.map(q => q.value),
         type: 'bar',
         name:'resoluciones x día',
         marker: { size: 15 }
     }
 
-    var layout1 = {
+}
+
+function getLayout(weekAgents, weekendAgents){
+    return {
         autosize: true,
         width: 700,
         height: 500,
         title: {
-            text: `resoulcion de tickets x dia escenario agentesLV: ${results.weekAgents} agentesFD: ${ results.weekendAgents}`,
+            text: `resoulcion de tickets x dia escenario agentesLV: ${weekAgents} agentesFD: ${weekendAgents}`,
             margin:{t:10}
         },
         yaxis: {
@@ -29,11 +51,6 @@ function generateGraph(results){
         },
         plotBackground: '#f3f6fa',
         margin: {t:50, r: 0, l: 100, b: 100},
-    };
+    }
 
-
-    var config = { responsive: true, displayModeBar: false };
-    
-    graphDiv = document.getElementById('graph1');
-    Plotly.newPlot(graphDiv, [data], layout1, config);
 }

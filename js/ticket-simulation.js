@@ -1,21 +1,9 @@
 
+function simulateScenarios(scenarios){
+    return scenarios.map(s => simulate(s.weekAgents, s.weekendAgents))
+}
 
 function simulate(weekAgents, weekendAgents) {
-
-    /*
-    items = []
-    for(let j= 0; j < 20; j++) {
-        //(console.log(cAgent())
-        //items.push(cAgentTot(200))
-        items.push(costoPen())
-        //items.push(cAgentTot(200))
-
-
-    }
-
-    console.log(items)
-    return 
-*/
     const maxTime = 99999 // TF
     const validMessagesRatio = 0.96
     const fixedTicketCost = 2.75 
@@ -66,16 +54,9 @@ function simulate(weekAgents, weekendAgents) {
                 queue.pending = 0 
             }
             
-            /*
-            if(time == 100) {
-                const totalTickets = ticketsQueues.reduce((a, b) => a + b.totalSolved, 0)
-                const totalCost = (fixedTicketCost * totalTickets) + variableCosts
-                console.log ("total: " +  totalCost + "variable: " + variableCosts)
-            }
-            */
         }
     }
-    return getResults(ticketsQueues, fixedTicketCost, variableCosts, weekAgents, weekendAgents)
+    return getResults(ticketsQueues, fixedTicketCost, variableCosts, weekAgents, weekendAgents, (maxTime/365))
 }
 
 function isWeekend(time){
@@ -90,11 +71,11 @@ function cAgentTot(activeAgents){
     return acum
 }
 
-function getResults(ticketsQueues, fixedTicketCost, variableCosts, weekAgents, weekendAgents) {
+function getResults(ticketsQueues, fixedTicketCost, variableCosts, weekAgents, weekendAgents, years) {
     const totalTickets = ticketsQueues.reduce((a, b) => a + b.totalSolved, 0)
     const totalCost = (fixedTicketCost * totalTickets) + variableCosts
     return {
-        totalCost: totalCost,
+        averageAnualCost: totalCost / years,
         weekAgents: weekAgents,
         weekendAgents: weekendAgents,
         queues : [
@@ -135,7 +116,6 @@ function cAgent(){
     //  R*(55,0000-6,0000)+6,0000
     const R = Math.random() 
     return Math.ceil(R*(55-6)+6)
-    //const result = (2.0208 / Math.pow((1/R-1) ,(1/21))) + 21
 }
 
 function costoPen(tickets) {
