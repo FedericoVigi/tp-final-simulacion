@@ -75,7 +75,7 @@ function getResults(ticketsQueues, fixedTicketCost, variableCosts, weekAgents, w
     const totalTickets = ticketsQueues.reduce((a, b) => a + b.totalSolved, 0)
     const totalCost = (fixedTicketCost * totalTickets) + variableCosts
     return {
-        averageAnualCost: totalCost / years,
+        averageAnualCost: (totalCost / years).toFixed(2),
         weekAgents: weekAgents,
         weekendAgents: weekendAgents,
         queues : [

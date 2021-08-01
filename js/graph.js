@@ -11,9 +11,15 @@ function generateGraph(results){
 
 
     results.forEach(result => {
+       
         data = getGraphData(result)
         layout = getLayout(result.weekAgents, result.weekendAgents)
+       
+        anualCostResult = document.createElement("h6")
+        anualCostResult.appendChild(document.createTextNode(`Costo anual promedio: ${result.averageAnualCost}`))
+       
         graphDiv = document.createElement("div")
+        graphs.appendChild(anualCostResult)
         graphs.appendChild(graphDiv)
         Plotly.newPlot(graphDiv, [data], layout, config);
     });
@@ -36,7 +42,10 @@ function getLayout(weekAgents, weekendAgents){
         width: 700,
         height: 500,
         title: {
-            text: `resoulcion de tickets x dia escenario agentesLV: ${weekAgents} agentesFD: ${weekendAgents}`,
+            text: `Escenario agentesLV: ${weekAgents} agentesFD: ${weekendAgents}`,
+            font: {
+                family: 'Courier New, monospace',
+              },
             margin:{t:10}
         },
         yaxis: {
